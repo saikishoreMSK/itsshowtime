@@ -10,3 +10,10 @@ document.getElementById('prev').onclick = function(){
 function goToTicket() {
     window.location.href = "Ticket/Ticket.html";
 }
+
+// Genres
+document.querySelectorAll(".elem").forEach(function (elem){
+    elem.addEventListener("mousemove",function(details){
+
+    });
+});

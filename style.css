@@ -187,3 +187,33 @@ html,body {
 .buttons button:hover {
     background-color: #bac383;
 }
+
+
+/* Genres */
+#genres {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding-right: 10vw;
+    padding-top: 100px;
+}
+.elem {
+    position: relative;
+    width: 100%;
+    padding: 3vw 3vw;
+    border-top: 1px solid #888;
+}
+.elem h1 {
+    text-transform: uppercase;
+    font-size: 4.6vw;
+    opacity: .7;
+}
+.elem:last-child{
+    border-bottom: 1px solid #888;
+}
+.elem img {
+    display: none;
+    position: absolute;
+    z-index: 4;
+    height: 300px;
+}
