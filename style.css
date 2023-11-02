@@ -66,104 +66,12 @@ html,body {
     letter-spacing: -8px;
 }
 
-/* featured */
-#featured {
-    padding: 10vw 15vw;
-}
-.fheading>h1 {
-    line-height: 1;
-    font-size: 4vw;
-    font-weight: 400;
-}
-.fheading>h1:nth-child(2){
-    color: transparent;
-    -webkit-text-stroke: 1px black;
-}
-
-#fimages {
-    
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 5vw;
-    height: 100vh;
-}
-#fleft { 
-    overflow: auto;
-    width:45%;
-    height: inherit;
-}
-.fleftelm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: inherit;
-}
-.fleftelm h1{
-    font-size: 2.5vw;
-    line-height: 1;
-    font-weight: 400;
-    text-transform: capitalize;
-    margin: 2vw 0vw;
-}
-.fleftelm h3{
-    font-size: 1.3vw;
-    font-weight: 500;
-}
-.fleftelm h4 {
-    opacity: .5;
-}
-#fright {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width:45%;
-    height: inherit;
-}
-#fright .images{
-    width: 90%;
-    height: 90%;
-    background-color: red;
-}
-#btndiv{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#btndiv button {
-    padding: 1.3vw 2.5vw;
-    border-radius: 100px;
-    border: 2px solid gray;
-    background-color: white;
-    font-size: 1vw;
-    font-weight: 500;
-    letter-spacing: -1px;
-}
-
-/* Develpoment and Resources */
-*::selection{
-    color:white;
-    background-color: #000;
-}
-#dev{
-    width: 100%;
-    padding: 5vw 15vw;
-}
-#dev h1{
-    font-size: 3.8vw;
-    font-weight: 400;
-    width: 60%;
-    line-height: 1;
-}
-
-
 /* Container */
 
 .container{
     position: relative;
     width: 80%;
-    height: 700px;
+    height: 600px;
     background-color: #f5f5f5;
     transform: translate(-50%,-50%);
     left: 50%;
