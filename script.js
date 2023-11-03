@@ -8,6 +8,8 @@ document.getElementById('prev').onclick = function(){
 }
 
 function goToTicket() {
+    let name = document.querySelector('.container .name').innerText;
+    let description = document.querySelector('.container .des').innerText;
     window.location.href = "Ticket/Ticket.html";
 }
 
