@@ -27,14 +27,22 @@ function randintgen(){
 };
 // Generate a random seats whenever a person clicks on dates and times
 randintgen();
-// let dateBut = document.getElementsByClassName("timings");
-// let timeBut = document.getElementsByClassName("timings");
-// dateBut.addEventListener("click",() => {
-//     randintgen();
-// });
-// timeBut.addEventListener("click", () => {
-//     randintgen();
-// });
+function toggleBooked(){
+    let seats = document.querySelectorAll(".seat");
+    seats.forEach(seat => {
+        let randint =Math.floor(Math.random()*2);
+        let booked = randint === 1 ? "booked" : "";
+        seat.classList.toggle('booked',booked === "booked");
+    });
+}
+toggleBooked();
+document.querySelector('.dates').addEventListener('click',() => {
+    toggleBooked();
+});
+document.querySelector('.times').addEventListener('click',() => {
+    toggleBooked();
+});
+
 
 let food = 500;
 let tickets = seats.querySelectorAll("input");
