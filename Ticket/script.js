@@ -17,16 +17,30 @@ let seatCategories = ['F1','F2','F3','F4','F5','F6','F7','F8','F9','F10',
 'C1','C2','C3','C4','C5','C6','C7','C8','C9','C10',
 'B1','B2','B3','B4','B5','B6','B7','B8','B9','B10',
 'A1','A2','A3','A4','A5','A6','A7','A8','A9','A10'];
-for(var i=1;i<60;i++){
-    let randint = Math.floor(Math.random()*2);
-    let booked = randint === 1 ? "booked" : "";
-    seats.insertAdjacentHTML("beforeend", '<input type="checkbox" name="tickets" id="s' + (i + 2) + '"><label for="s' + (i + 2) + '" class="seat ' + booked + '">'+seatCategories[i]+'</label>')
+
+function randintgen(){
+    for(var i=1;i<60;i++){
+        let randint = Math.floor(Math.random()*2);
+        let booked = randint === 1 ? "booked" : "";
+        seats.insertAdjacentHTML("beforeend", '<input type="checkbox" name="tickets" id="s' + (i + 2) + '"><label for="s' + (i + 2) + '" class="seat ' + booked + '">'+seatCategories[i]+'</label>')
+    };
 };
+// Generate a random seats whenever a person clicks on dates and times
+randintgen();
+// let dateBut = document.getElementsByClassName("timings");
+// let timeBut = document.getElementsByClassName("timings");
+// dateBut.addEventListener("click",() => {
+//     randintgen();
+// });
+// timeBut.addEventListener("click", () => {
+//     randintgen();
+// });
 
 let food = 500;
 let tickets = seats.querySelectorAll("input");
 let foodButton = document.getElementById("foodButton");
 let bookButton = document.getElementById("bookButton");
+
 
 // Function to toggle background color
 function toggleBackgroundColor() {
@@ -78,24 +92,24 @@ tickets.forEach((ticket, i) => {
         if (ticket.checked) {
             if (i >= 40) {
                 count += 1;
-                amount += 150; // Adjust for i >= 40
+                amount += 100; // Adjust for i >= 40
             } else if (i >= 20 && i < 40) {
                 count += 1;
-                amount += 250;
+                amount += 150;
             } else if (i < 20) {
                 count += 1;
-                amount += 500; // Adjust for i < 20
+                amount += 200; // Adjust for i < 20
             }
         } else {
             if (i >= 40) {
                 count -= 1;
-                amount -= 150; // Adjust for i >= 40
+                amount -= 100; // Adjust for i >= 40
             } else if (i >= 20 && i < 40) {
                 count -= 1;
-                amount -= 250;
+                amount -= 150;
             } else if (i < 20) {
                 count -= 1;
-                amount -= 500; // Adjust for i < 20
+                amount -= 200; // Adjust for i < 20
             }
         }
 

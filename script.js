@@ -7,10 +7,9 @@ document.getElementById('prev').onclick = function(){
     document.getElementById('slide').prepend(lists[lists.length-1]);
 }
 
-function goToTicket() {
-    let name = document.querySelector('.container .name').innerText;
-    let description = document.querySelector('.container .des').innerText;
-    window.location.href = "Ticket/Ticket.html";
+function goToTicket(name) {
+    let url = 'Ticket/Ticket.html?name='+name;
+    window.location.href = url;
 }
 
 // Genres
