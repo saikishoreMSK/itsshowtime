@@ -1,13 +1,69 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>All Movies</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta data-name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!--===== Boxicons CSS =====-->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
+    <title>Image Gallery with Search Box</title>
+</head>
+<body>
+    <div class="container">
+        <div class="search-box">
+            <i class="bx bx-search"></i>
+            <input type="text" placeholder="Search a movie">
+        </div>
 
-        <script src="script.js"></script>
-    </body>
+        <div class="images">
+            <div class="image-box" data-name="animal" data-genre="action">
+                <img src="../Movies/animal.jpg" alt="">
+                <h6>animal</h6>
+            </div>
+            <div class="image-box" data-name="avatar3">
+                <img src="../Movies/avatar3.jpg" alt="">
+                <h6>avatar3</h6>
+            </div> 
+            <div class="image-box" data-name="jathirathnalu">
+                <img src="../Movies/comedy.webp" alt="">
+                <h6>jathirathnalu</h6>
+            </div>
+            <div class="image-box action" data-name="fighter" data-genre="action">
+                <img src="../Movies/fighter.jpg" alt="">
+                <h6>fighter</h6>
+            </div>
+            <div class="image-box" data-name="dunki">
+                <img src="../Movies/dunki.jpg" alt="">
+                <h6>dunki</h6>
+            </div>
+            <div class="image-box" data-name="inception">
+                <img src="../Movies/inception.jpg" alt="">
+                <h6>inception</h6>
+            </div>
+            <div class="image-box" data-name="leo">
+                <img src="../Movies/leo.jpg" alt="">
+                <h6>leo</h6>
+            </div>
+            <div class="image-box" data-name="salaar" data-genre="action">
+                <img src="../Movies/salaar.jpg" alt="">
+                <h6>salaar</h6>
+            </div>
+            <div class="image-box" data-name="Johnwick">
+                <img src="../Movies/action.jpg" alt="">
+                <h6>Johnwick</h6>
+            </div>
+            <div class="image-box" data-name="captain">
+                <img src="../Movies/captain.jpg" alt="">
+                <h6>captain</h6>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>

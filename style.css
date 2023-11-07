@@ -16,6 +16,7 @@ html,body {
     z-index: 999;
     border-radius: 50%;
     background-color: black;
+    /* mix-blend-mode: difference; */
 }
 
 #main{
@@ -46,8 +47,8 @@ html,body {
     font-weight: 600;
     font-size: 1.2vw;
     color: black;
-
 }
+
 #nav i {
     margin-top: 3px;
     font-size: 20px;
@@ -168,11 +169,20 @@ html,body {
 }
 .item button {
     padding: 10px 20px;
-    border: none;
+    cursor: pointer;
+    background-color: orange;
+    border: 2px solid black;
+    box-shadow: 2px 2px 0 0 white,
+    4px 4px 0 0 black;
+    transition: 200ms;
     opacity: 0;
     animation: showcontent 1s ease-in-out 0.6s 1 forwards;
 }
-
+.item button:hover {
+    box-shadow: 3px 3px white,
+    6px 6px 0 0 black;
+    transform: translate(-2px,-2px);
+}
 @keyframes showcontent{
     from{
         opacity: 0;

@@ -13,6 +13,8 @@ document.getElementById('next').onclick = function(){
     let lists = document.querySelectorAll('.item');
     document.getElementById('slide').appendChild(lists[0]);
 }
+//anchor tag scroll
+
 document.getElementById('prev').onclick = function(){
     let lists = document.querySelectorAll('.item');
     document.getElementById('slide').prepend(lists[lists.length-1]);
@@ -23,11 +25,14 @@ function goToTicket(name) {
     window.location.href = url;
 }
 
+function redirectToMovies(genre) {
+    let url = 'List/index.html?genre='+genre;
+    window.location.href = url;
+    // movies.html?genre=${genre};
+}
 // Genres
 // document.querySelectorAll(".elem").forEach(function (elem){
-
 //     elem.addEventListener("mousemove",function(details){
-
 //         gsap.to(elem.querySelector("img"),{
 //             opacity:1,
 //             ease: Power3 ,
