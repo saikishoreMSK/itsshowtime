@@ -125,3 +125,26 @@ tickets.forEach((ticket, i) => {
         document.querySelector(".count").innerHTML = count;
     });
 });
+
+
+// var movieTheatre = {
+//     Mumbai: ["hello1","hello2","hello3","hello4"],
+//     Hyderabad: ["World1","World2","World3","World4"]
+// }
+// window.onload = function(){
+//     const selectCity = document.getElementById('city'),
+//      selectPlace = document.getElementById('area'),
+//      select = document.querySelectorAll('select')
+
+//      selectPlace.disabled = true
+
+//      selects.forEach(select => {
+//         if(select.disabled == true){
+//             select.style.cursor = "auto"
+//         }
+//      })
+
+//      for(let city in selectCity){
+//         selectCity.options[selectCity.option.length] = new Option(city,city)
+//      }
+// }
