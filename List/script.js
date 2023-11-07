@@ -34,3 +34,8 @@ search.addEventListener("keyup", () =>{
         image.style.display = "block";
     })
 })
+
+function goToTicket(name) {
+    let url = '../Ticket/Ticket.html?name='+name;
+    window.location.href = url;
+}
