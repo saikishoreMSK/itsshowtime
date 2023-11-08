@@ -1,15 +1,25 @@
+// document.addEventListener('DOMContentLoaded', function() {
+//     const genreParam = new URLSearchParams(window.location.search).get('genre');
+//     const images = document.querySelectorAll('.image-box');
+
+//     images.forEach(image => {
+//         if (genreParam && image.dataset.genre !== genreParam) {
+//             image.style.display = 'none';
+//         }
+//     });
+// });
+
 document.addEventListener('DOMContentLoaded', function() {
     const genreParam = new URLSearchParams(window.location.search).get('genre');
     const images = document.querySelectorAll('.image-box');
 
     images.forEach(image => {
-        if (genreParam && image.dataset.genre !== genreParam) {
+        const genres = image.dataset.genre.split(' ');
+        if (genreParam && !genres.includes(genreParam)) {
             image.style.display = 'none';
-        }
-    });
+        }
+    });
 });
-
-
 
 const search = document.querySelector(".search-box input"),
       images = document.querySelectorAll(".image-box");
