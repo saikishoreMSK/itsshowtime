@@ -7,15 +7,58 @@ body{
 }
 .center {
     width: 100%;
-    height: 100%;
+    height: 120%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: linear-gradient(to right,rgb(162,216,162),rgb(102,194,102));
 }
+
+
+/* Selecting a place */
+.select-menu {
+
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    top: 0;
+
+}
+.select-menu h3{
+    margin-bottom: 3px;
+}
+.select-menu form{
+    display: flex;
+    justify-content: center;
+    align-items: self-start;
+    gap: 15px;
+}
+form select{
+    width: 200px;
+    padding: 10px;
+    padding-left: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: .8vw;
+    box-shadow: 0 5px 10px 0 rgb(0,0,0,0.25);
+    cursor: pointer;
+}
+.select-menu option {
+    padding: 15px;
+    background-color: antiquewhite;
+    border-radius: 15px;
+}
+
+/* Ticket Section */
 .tickets {
+    margin-top: 20px;
     width: 550px;
     height: fit-content;
+    
     border: 0.4mm solid black;
     border-radius: 3mm;
     box-sizing: border-box;
@@ -230,30 +273,3 @@ input {
     border: none;
     cursor: pointer;
 }
-
-/* Selecting a place */
-/* .select-menu {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    top: 0;
-}
-.select-menu form{
-    display: flex;
-    justify-content: center;
-    align-items: self-start;
-    gap: 15px;
-}
-form select{
-    width: 200px;
-    padding: 15px;
-    padding-left: 10px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    font-size: 1vw;
-    box-shadow: 0 5px 10px 0 rgb(0,0,0,0.25);
-    cursor: pointer;
-} */

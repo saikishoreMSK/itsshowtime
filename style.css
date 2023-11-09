@@ -88,6 +88,7 @@ html,body {
     position: relative;
     width: 80%;
     height: 85vh;
+    margin-top: 30px;
     background-color: #f5f5f5;
     transform: translate(-50%,-50%);
     left: 50%;
@@ -251,6 +252,70 @@ html,body {
     transform: translate(-50%, -50%);
     /* transition: all cubic-bezier(0.19, 1, 0.22, 1) .5s; */
     position: absolute;
-    z-index: 4;
     height: 200px;
+}
+
+/* Languages Settings */
+.languages {
+    min-height: 100vh;
+    width: 100%;
+    z-index: 9;
+    position: relative;
+    padding: 100px;
+    background-color: #0F0D0D;
+    margin-bottom: 20px;
+}
+.lang-head h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 7vw;
+    font-weight: 600;
+    color: white;
+    padding: 2rem 0rem;
+}
+.lang-elem {
+    /* background-color: salmon; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 2px solid;
+}
+.lang-elem:nth-child(1){
+    border-top: 2px solid;
+}
+.lang-elem img {
+    pointer-events: none;
+    height: 250px;
+    position: absolute;
+    opacity: 0;
+    transition: all ease-out 0.3s;
+    transform: translateY(10%) rotate(3deg);
+}
+.lang-elem img:nth-child(1){
+    left: 15%;
+}
+.lang-elem img:nth-child(3){
+    right: 15%;
+}
+.text-div {  
+    height: 110px;
+    overflow: hidden;
+}
+.lang-elem h1 {
+    font-size: 7vw;
+    font-weight: 300;
+    transition: all ease-out 0.3s;
+    color: white;
+    opacity: .7;
+}
+.lang-elem:hover h1{
+    transform: translateY(-100%);
+    color: #EDBFFF;
+}
+.lang-elem:hover img{
+    opacity: 1;
+    transform: translateY(0%) rotate(0deg);
 }

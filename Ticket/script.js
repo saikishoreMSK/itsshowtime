@@ -127,24 +127,44 @@ tickets.forEach((ticket, i) => {
 });
 
 
-// var movieTheatre = {
-//     Mumbai: ["hello1","hello2","hello3","hello4"],
-//     Hyderabad: ["World1","World2","World3","World4"]
+// var cityAreainfo = {
+//     Hyderabad: [""],
+//     Mumbai: ["G7 Multiplex:Bandra(W)","Cinepolis:NaviMumbai","INOX:Megaplex,Malad","PVR ICON:Goregan","MovieTime:Goregaon","Maxus Cinemas:Bhayander","Metro INOX:Marine Lines","BMX Cinemas"],
+//     Chennai: [""],
+//     Delhi: [""],
+//     Bengaluru: [""]
 // }
-// window.onload = function(){
-//     const selectCity = document.getElementById('city'),
-//      selectPlace = document.getElementById('area'),
-//      select = document.querySelectorAll('select')
+var cityAreainfo = {
+    Hyderabad: ["AMB Cinemas:Gachibowli","Prasads Multiplex: Hyderabad","Asian Lakshmikala Cinepride:Moosapet","AAA Cinemas: Ameerpet","GPR Multiplex:Nizampet","Asian M Cube Mall: Attapur","Asian Cineplanet Multiplex: Kompally","Asian CineSquare Multiplex: Uppal","BVK Multiplex Vijayalakshmi: LB Nagar","Asian Sha & Shahensha: Chintal"],
+    Mumbai: ["G7 Multiplex:Bandra(W)","Cinepolis:NaviMumbai","INOX:Megaplex,Malad","PVR ICON:Goregan","MovieTime:Goregaon","Maxus Cinemas:Bhayander","Metro INOX:Marine Lines","BMX Cinemas","Woodland Cinemas:Virar(W)","Nishat Cinema: Grant Road"],
+    Chennai: ["AGS Cinemas: Villivakkam","AGS Cinemas: T.Nagar","AGS Cinemas: Maduravoyal","PVR: Aerohub","Arul Muruga Theatre 4k: Thiryporur","EVP Cinemas: Chennai","INOX: The Marina Mall","INOX National: Arcot Road","Cinepolis: BSR Mall","Green Cinemas 4K Atmos:Padi"],
+    Delhi: ["PVR: Vegas Dwarka","Delite Cinema: Asaf Ali Road","Liberty Cinema: Karol Bagh","Cinepolis: DLF Avenue","PVR Promenade: Vasant Kunj","PVR: Select City Walk","G3s Cinema: Rohini ","INOX: Janak Place","Amba Cinema:Delhi","INOX: Patel Nagar"],
+    Bengaluru: ["PVR: Orion MAll","PVR: Vega City","Cinepolis: Lulu Mall","Gopalan Grand Mall: Old Madras","Miraj Cinemas: TGN Lotus Elite","Urvashi Cinema: Benguluru","Navrang Theatre: Rajaji Nagar","Veeresh Cinemas: Magadi Road","HMT Digital 4K Cinema: Jalahalli","INOX: Brookefield Mall"]
+}
 
-//      selectPlace.disabled = true
+window.onload = function(){
+    const selectCity = document.getElementById('city'),
+     selectPlace = document.getElementById('area'),
+     selects = document.querySelectorAll('select')
 
-//      selects.forEach(select => {
-//         if(select.disabled == true){
-//             select.style.cursor = "auto"
-//         }
-//      })
+     selectPlace.disabled = true
 
-//      for(let city in selectCity){
-//         selectCity.options[selectCity.option.length] = new Option(city,city)
-//      }
-// }
+     selects.forEach(select => {
+        if(select.disabled == true){
+            select.style.cursor = "auto"
+        }
+     })
+
+     for(let city in cityAreainfo){
+        console.log(city)
+        selectCity.options[selectCity.options.length] = new Option(city,city)
+     }
+    selectCity.onchange = (e) =>{
+        selectPlace.disabled = false
+        selectPlace.length=1
+        for(let place in cityAreainfo[e.target.value]){
+            console.log(place);
+            selectPlace.options[selectPlace.options.length] = new Option(cityAreainfo[e.target.value][place],cityAreainfo[e.target.value][place])
+        }
+    }
+}
