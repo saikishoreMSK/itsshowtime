@@ -10,6 +10,7 @@ html,body {
 }
 #minicircle {
     transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+    pointer-events: none;
     height: 10px;
     width: 10px;
     position: absolute;
@@ -263,7 +264,6 @@ html,body {
     position: relative;
     padding: 100px;
     background-color: #0F0D0D;
-    margin-bottom: 20px;
 }
 .lang-head h1 {
     display: flex;
@@ -318,4 +318,254 @@ html,body {
 .lang-elem:hover img{
     opacity: 1;
     transform: translateY(0%) rotate(0deg);
+}
+
+/* contact us details */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --primary: rgb(0,0,0);
+    --secondary: rgb(255,124,10);
+}
+
+.contact {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+    background-color: salmon;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact .logo-div {
+background-color: salmon;
+position: absolute;
+height: 50vh;
+width: 30%; 
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+left: 0;
+top: 0;
+/* margin-left: 0%;
+margin-bottom: 30%; */
+/* overflow: hidden; */
+}
+.contact #logo {
+position: relative;
+width: 200px;
+aspect-ratio: 1000 / 556;
+user-select: none;
+}
+
+.contact #logo > img {
+width: 100%;
+position: absolute;
+}
+.contact .logo-div .icons{
+    backdrop-filter: blur(9px) saturate(180%);
+    -webkit-backdrop-filter: blur(9px) saturate(180%);
+    background: rgba(255, 255, 255, .4);
+    width: fit-content;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 0 20px;
+    border-radius: 7mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Team Div */
+
+.contact .center {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contact .team {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: poppins;
+}
+.contact .title{
+    font-size: 40px;
+    font-weight: 700;
+}
+.contact .profiles {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.contact .profile{
+    width: fit-content;
+    height: fit-content;
+    min-width: 350px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding-top: 20px;
+    margin: 20px;
+    /* border: 1px solid black; */
+    max-height: 100px;
+    transition: 0.5s ease-in-out;
+}
+.contact .profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+}
+.contact .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+.contact .details span {
+    font-weight: 300;
+}
+.contact .card {
+    width: 320px;
+    height: 300px;
+    position: relative;
+    margin-bottom: 20px;
+    background-color: var(--primary);
+    box-sizing: border-box;
+    padding: 20px;
+    color: white;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 6mm;
+}
+.contact .head{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: left;
+    margin-bottom: 5px;
+}
+.contact .head img{
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 5mm;
+}
+.contact .name {
+    font-size: 16px;
+    font-weight: 200;
+    width: fit-content;
+    margin-left: 10px;
+    border: 1px solid rgba(255, 255, 255, .4);
+    padding: 0 8px;
+    border-radius: 3mm;
+}
+.contact .content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 15px;
+    position: relative;
+}
+.contact .role{
+    font-weight: 200;
+    font-size: 14px;
+}
+.contact .icons{
+    backdrop-filter: blur(9px) saturate(180%);
+    -webkit-backdrop-filter: blur(9px) saturate(180%);
+    background: rgba(255, 255, 255, .4);
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 0 20px;
+    border-radius: 7mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.contact .content::before{
+    position: absolute;
+    content: "";
+    top: 100%;
+    left: 70%;
+    transform: translate(-50%,0);
+    background: var(--secondary);
+    width: 60px;
+    height: 30px;
+    filter: blur(30px);
+}
+.contact .icons a{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    transition: .35s;
+    text-decoration: none;
+}
+.contact .icons a:hover{
+    background-color: white;
+    color: var(--primary);
+    border-radius: 50%;
+}
+.contact .card::before{
+    position: absolute;
+    content: "location_pin";
+    color: var(--primary);
+    font-size: 85px;
+    top: calc(100% - 7px);
+    left: 50%;
+    font-family: "Material Icons";
+    transform: translate(-50%,0) rotate(180deg);
+}
+.profile:hover{
+    max-height: 500px;
+}
+.profile:hover #pic{
+    border: 5px solid var(--primary);
+}
+.profile:hover .card{
+    display: flex;
+    animation: fade 0.5s ease-in-out;
+}
+@keyframes fade {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    1%,
+    50% {
+        display: flex;
+        opacity: 0;
+    }
+    100% {
+        display: flex;
+        opacity: 1;
+    }
+}
+.profile:nth-child(odd){
+    --secondary: rgb(0,0,0);
+    --primary: rgb(255,124,10);
 }
