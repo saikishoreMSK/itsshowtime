@@ -8,13 +8,94 @@ function cirMouseFoll(){
         document.querySelector("#minicircle").style.transform = `translate(${details.clientX}px, ${details.clientY}px)`;
     });
 }
-cirMouseFoll();
-document.getElementById('next').onclick = function(){
-    let lists = document.querySelectorAll('.item');
-    document.getElementById('slide').appendChild(lists[0]);
+function vidMouseFoll() {
+  const videoContainer = document.querySelector(".video-container");
+  const headingsH1 = document.querySelectorAll(".headings h1");
+
+  headingsH1.forEach((h1) => {
+    h1.addEventListener("mouseenter", () => {
+      gsap.to(videoContainer, { opacity: 1, duration: 0.3 });
+    });
+
+    h1.addEventListener("mousemove", (e) => {
+      gsap.to(videoContainer, {
+        x: e.clientX,
+        y: e.clientY,
+        ease: "power2.out",
+        duration: 0.2,
+        scale:1
+      });
+    });
+
+    h1.addEventListener("mouseleave", () => {
+      gsap.to(videoContainer, { opacity: 0, duration: 0.3,scale:0});
+    });
+  });
 }
+cirMouseFoll();
+vidMouseFoll();
+// Shery.mouseFollower();
+// Shery.makeMagnet(".nav-link");
+// Shery.makeMagnet("button");
+// Shery.hoverWithMediaCircle(".headings",{videos: ["./Movies/bgv.mp4"]})
+
+
+//animation using gsap and timeline
+var t1 = gsap.timeline()
+t1.from("#nav img,#nav a,#nav i",{
+  y:-100,
+  duration:1,
+  delay:1,
+  opacity:0,
+  stagger:0.1
+})
+
+t1.from("#homemain h1",{
+  x:-100,
+  duration:1,
+  opacity:0,
+  stagger:0.2
+})
+
+t1.from("#genres h1",{
+  x:-100,
+  duration:1,
+  opacity:0,
+  stagger:0.2,
+  // scrollTrigger:{
+  //   trigger:"#genres h1",
+  //   scroll: "#main",
+  //   markers:true,
+  //   start:"top 60%",
+  // }
+})
+// const videoContainer = document.getElementById('.video-container');
+
+// document.addEventListener('mousemove', (e) => {
+//   gsap.to(videoContainer, {
+//     duration: 0.5,
+//     opacity: 1,
+//     ease: "power2.out",
+//     x: e.clientX,
+//     y: e.clientY
+//   });
+// });
+
+
+// ScrollTrigger.create({
+//   trigger:"#genres h1",
+//   start:"top 60%",
+//   scroller:"#main",
+//   markers:true,
+//   animation:t1
+// })
+
 //anchor tag scroll
 
+document.getElementById('next').onclick = function(){
+  let lists = document.querySelectorAll('.item');
+  document.getElementById('slide').appendChild(lists[0]);
+}
 document.getElementById('prev').onclick = function(){
     let lists = document.querySelectorAll('.item');
     document.getElementById('slide').prepend(lists[lists.length-1]);
