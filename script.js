@@ -148,6 +148,64 @@ document.querySelectorAll(".elem").forEach(function (elem){
     });
 });
 
+
+// Recommadation section
+const tracks = document.querySelectorAll(".image-track");
+
+// Add event listeners to all tracks
+tracks.forEach(track => {
+  track.dataset.mouseDownAt = "0";
+  track.dataset.prevPercentage = "0";
+
+  track.addEventListener("mousedown", handleOnDown);
+  track.addEventListener("touchstart", handleOnDown);
+  track.addEventListener("mouseup", handleOnUp);
+  track.addEventListener("touchend", handleOnUp);
+  track.addEventListener("mousemove", handleOnMove);
+  track.addEventListener("touchmove", handleOnMove);
+});
+
+function handleOnDown(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  e.stopImmediatePropagation();
+  this.dataset.mouseDownAt = e.clientX;
+}
+
+function handleOnUp() {
+  this.dataset.mouseDownAt = "0";
+  this.dataset.prevPercentage = this.dataset.percentage;
+}
+
+function handleOnMove(e) {
+  if (this.dataset.mouseDownAt === "0") return;
+
+  const mouseDelta = parseFloat(this.dataset.mouseDownAt) - e.clientX,
+    maxDelta = window.innerWidth / 2;
+
+  const percentage = (mouseDelta / maxDelta) * -100,
+    nextPercentageUnconstrained = parseFloat(this.dataset.prevPercentage) + percentage,
+    nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+  this.dataset.percentage = nextPercentage;
+
+  this.animate(
+    {
+      transform: `translate(${nextPercentage}%, -50%)`
+    },
+    { duration: 1200, fill: "forwards" }
+  );
+
+  for (const image of this.getElementsByClassName("image")) {
+    image.animate(
+      {
+        objectPosition: `${100 + nextPercentage}% center`
+      },
+      { duration: 1200, fill: "forwards" }
+    );
+  }
+}
+
 // contact us details
 const logo = document.getElementById("logo"),
       images = logo.querySelectorAll(".contact img");
