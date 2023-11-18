@@ -34,11 +34,6 @@ function vidMouseFoll() {
 }
 cirMouseFoll();
 vidMouseFoll();
-// Shery.mouseFollower();
-// Shery.makeMagnet(".nav-link");
-// Shery.makeMagnet("button");
-// Shery.hoverWithMediaCircle(".headings",{videos: ["./Movies/bgv.mp4"]})
-
 
 //animation using gsap and timeline
 var t1 = gsap.timeline()
@@ -69,26 +64,7 @@ t1.from("#genres h1",{
   //   start:"top 60%",
   // }
 })
-// const videoContainer = document.getElementById('.video-container');
 
-// document.addEventListener('mousemove', (e) => {
-//   gsap.to(videoContainer, {
-//     duration: 0.5,
-//     opacity: 1,
-//     ease: "power2.out",
-//     x: e.clientX,
-//     y: e.clientY
-//   });
-// });
-
-
-// ScrollTrigger.create({
-//   trigger:"#genres h1",
-//   start:"top 60%",
-//   scroller:"#main",
-//   markers:true,
-//   animation:t1
-// })
 
 //anchor tag scroll
 
