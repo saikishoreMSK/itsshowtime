@@ -99,7 +99,7 @@
         </div>
         <!-- recommend -->
         <div class="recommend">
-            <h2>Upcoming Hollywood Movies</h2>
+            <h2 class="head-line" data-value="UPCOMING HOLLYWOOD MOVIES">Upcoming Hollywood Movies</h2>
             <div class="image-track" data-mouse-down-at="0" data-prev-percentage="0">
                 <div class="image-container">
                     <img class="image" src="/Saikishore/project1/Movies/English/action.jpg" draggable="false" />
@@ -129,12 +129,13 @@
                 <!-- <img class="image" src="/Saikishore/project1/Movies/" draggable="false" /> -->
             </div>
             
-            <h2>Upcoming Indian Movies</h2>
+            <h2 class="head-line" data-value="UPCOMING INDIAN MOVIES">Upcoming Indian Movies</h2>
             <div class="image-track" data-mouse-down-at="0" data-prev-percentage="0">
                 
                 <div class="image-container">
                     <img class="image" src="/Saikishore/project1/Movies/salaar.jpg" draggable="false" />
                     <h1>Salaar</h1>
+                    <button onclick="goToTicket('Salaar')">Book Now</button>
                 </div>
                 <div class="image-container">
                     <img class="image" src="/Saikishore/project1/Movies/leo.jpg" draggable="false" />
@@ -162,7 +163,7 @@
         <!-- Genre -->
         <div id="genres">
             <div class="lang-head">
-                <h1>Genres</h1>
+                <h1 class="head-line" data-value="GENRES">Genres</h1>
             </div>
             <div class="elem superhero" onclick="redirectToMovies('superhero')">
                 <img src="Movies/English/captain.jpg" alt="">
@@ -188,7 +189,7 @@
         <!-- Languages -->
         <div class="languages">
             <div class="lang-head">
-                <h1>Languages</h1>
+                <h1 class="head-line" data-value="LANGUAGES">Languages</h1>
             </div>
             <div class="lang-elem" onclick="redirectToMovies('english')">
                 <img src="Movies/English/blue-beetle.jpg" alt="">
@@ -231,10 +232,131 @@
                 <img src="Movies/kannada/love.jpg" alt="">
             </div>
         </div>
+        <!-- Food -->
+        <section class="slider">
+            <div class="lang-head">
+                <h1 class="head-line" data-value="FOOD">Food</h1>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <img src="Movies/food/1 (2).png" alt="" class="card-img">
+                    <h1 class="card-title">Cheese HumBurger</h1>
+                    <div class="card-body">
+                        <!-- <div class="card-star">
+                            <span class="rating-value">4.5</span>
+                            <span class="star">&#9733;</span>
+                        </div> -->
+                        <p class="card-price">60rs</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success">Buy Now</button>
+                        <button class="btn btn-border add-to-cart">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <img src="Movies/food/1 (5).png" alt="" class="card-img">
+                    <h1 class="card-title">Burger</h1>
+                    <div class="card-body">
+                        <p class="card-price">60rs</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success">Buy Now</button>
+                        <button class="btn btn-border add-to-cart">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <img src="Movies/food/1 (11).png" alt="" class="card-img">
+                    <h1 class="card-title">Coca Cola</h1>
+                    <div class="card-body">
+                        <p class="card-price">40rs</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success">Buy Now</button>
+                        <button class="btn btn-border add-to-cart">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <img src="Movies/food/1 (3).png" alt="" class="card-img">
+                    <h1 class="card-title">Sprite</h1>
+                    <div class="card-body">
+                        <p class="card-price">40rs</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success">Buy Now</button>
+                        <button class="btn btn-border add-to-cart">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <img src="Movies/food/1 (7).png" alt="" class="card-img">
+                    <h1 class="card-title">Lays</h1>
+                    <div class="card-body">
+                        <p class="card-price">20rs</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success">Buy Now</button>
+                        <button class="btn btn-border add-to-cart">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <img src="Movies/food/1 (8).png" alt="" class="card-img">
+                    <h1 class="card-title">Doritos</h1>
+                    <div class="card-body">
+                        <p class="card-price">20rs</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success">Buy Now</button>
+                        <button class="btn btn-border add-to-cart">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <img src="Movies/food/1 (9).png" alt="" class="card-img">
+                    <h1 class="card-title">French Fries</h1>
+                    <div class="card-body">
+                        <p class="card-price">50rs</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success">Buy Now</button>
+                        <button class="btn btn-border add-to-cart">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <img src="Movies/food/1 (4).png" alt="" class="card-img">
+                    <h1 class="card-title">Water Bottle</h1>
+                    <div class="card-body">
+                        <p class="card-price">20</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success">Buy Now</button>
+                        <button class="btn btn-border add-to-cart">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+            <span class="arrow left">&#129120;</span>
+            <span class="arrow right">&#129122;</span>
+
+            <div class="shopping-cart" data-product-count="0">
+                <span class="cart-icon">&#128722;</span>
+            </div>
+        </section>
+        
         <!-- contact us -->
         <div class="contact">
             <div class="lang-head">
-                <h1>Contact Us</h1>
+                <h1 class="head-line" data-value="CANTACT US">Contact Us</h1>
             </div>
             <div class="center">
                 <div class="logo-div">
@@ -329,6 +451,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
     <script src="script.js"></script>
+    <script src="script2.js"></script>
     
 </body>
 </html>

@@ -183,6 +183,28 @@ function handleOnMove(e) {
   }
 }
 
+// Hacker Effect
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+document.querySelectorAll(".head-line").forEach(function (line) {
+  line.addEventListener("mousemove", function (event) {
+    let iteration = 0;
+    const interval = setInterval(() => {
+      line.innerText = line.innerText.split("").map((letter, index) => {
+        if (index < iteration) {
+          return line.dataset.value[index];
+        }
+        return letters[Math.floor(Math.random() * 26)];
+      }).join("");
+
+      if (iteration >= line.dataset.value.length) {
+        clearInterval(interval);
+      }
+      iteration += 1 / 3;
+    }, 40);
+  });
+});
+
 // contact us details
 const logo = document.getElementById("logo"),
       images = logo.querySelectorAll(".contact img");
