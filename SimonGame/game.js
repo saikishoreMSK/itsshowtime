@@ -6,6 +6,7 @@ var userClickedPattern = [];
 
 var started = false;
 var level = 0;
+var gameScore = 0;
 
 $(document).keypress(function() {
   if (!started) {
@@ -73,7 +74,18 @@ function playSound(name) {
 }
 
 function startOver() {
+  gameScore = level;
   level = 0;
   gamePattern = [];
   started = false;
 }
+
+const urlParams = new URLSearchParams(window.location.search);
+let name = urlParams.get('name');
+
+// Redirect to the ticket site with the game score as a parameter
+function goToTicket() {
+  const url = `../Ticket/Ticket.html?name=${name}&score=${gameScore}`;
+  window.location.href = url;
+}
+
