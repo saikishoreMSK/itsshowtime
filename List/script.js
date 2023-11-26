@@ -9,6 +9,15 @@
 //     });
 // });
 
+var t1 = gsap.timeline();
+
+t1.from(".search-box,.image-box",{
+    opacity: 0,
+    x:-100,
+    duration: 1,
+    stagger: 0.1
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const genreParam = new URLSearchParams(window.location.search).get('genre');
     const images = document.querySelectorAll('.image-box');

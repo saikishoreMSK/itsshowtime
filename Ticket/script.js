@@ -33,7 +33,6 @@ window.onload = function(){
         selectPlace.disabled = false
         selectPlace.length=1
         for(let place in cityAreainfo[e.target.value]){
-            console.log(place);
             selectPlace.options[selectPlace.options.length] = new Option(cityAreainfo[e.target.value][place],cityAreainfo[e.target.value][place])
             selectPlace.onchange=(ev)=>{
                 toggleBooked();
@@ -49,6 +48,8 @@ window.onload = function(){
 // Get parameters from the URL
 const urlParams = new URLSearchParams(window.location.search);
 const gameScore = urlParams.get('score');
+let food = urlParams.get('price');
+food = Number(food);
 
 
 // let urlParams= new URLSearchParams(window.location.search);
@@ -91,8 +92,7 @@ document.querySelector('.times').addEventListener('click',() => {
     toggleBooked();
 });
 
-
-let food = Number(1);
+console.log(food);
 let tickets = seats.querySelectorAll("input");
 let foodButton = document.getElementById("foodButton");
 let bookButton = document.getElementById("bookButton");
@@ -179,7 +179,7 @@ tickets.forEach((ticket, i) => {
             const discountedPrice = ticketPrice - (ticketPrice * discountPercentage) / 100;
 
             // Display the discounted price on the ticket booking site
-            document.getElementById('discountedPrice').innerHTML = 'Total:' + discountedPrice;
+            document.getElementById('discountedPrice').innerHTML =  discountedPrice;
         }
 
         // Call the function to apply discount based on the game score
@@ -210,7 +210,7 @@ bookButton.addEventListener("click", () => {
     const selectedTime = document.querySelector('.times input:checked + label').innerText;
 
     if (count > 0) {
-        let confirmationMessage = `Your ${count} movie ticket(s) at ${selectedCity} (city), ${selectedPlace} (place) on ${selectedDay} ${selectedDate} at ${selectedTime} have been booked for a total of Rs${discountedPrice}.`;
+        let confirmationMessage = `Your ${count} movie ticket(s) at ${selectedCity} (city), ${selectedPlace} (place) on ${selectedDay} ${selectedDate} at ${selectedTime} have been booked with food for a Total of Rs${Number(discountedPrice) + Number(food)}.`;
         alert(confirmationMessage);
     } else {
         alert("Please select at least one ticket before booking.");

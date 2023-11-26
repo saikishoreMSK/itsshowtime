@@ -8,6 +8,7 @@ body{
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
+    background: linear-gradient(to right,rgb(162,216,162),rgb(102,194,102));
 }
 .center {
     width: 100%;
@@ -16,7 +17,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right,rgb(162,216,162),rgb(102,194,102));
+    /* background: linear-gradient(to right,rgb(162,216,162),rgb(102,194,102)); */
 }
 
 
@@ -302,6 +303,8 @@ input {
   outline: none; border:none;
   text-transform: capitalize;
   transition: all .2s linear;
+  width: 30%;
+  height: 120%;
 }
 
 .container{
@@ -310,13 +313,12 @@ input {
     align-items: center;
     padding:25px;
     min-height: 100vh;
-    background: linear-gradient(90deg, #2ecc71 60%, #27ae60 40.1%);
   }
   
   .container form{
     padding:20px;
     width:700px;
-    background: #fff;
+    background: #fff; 
     box-shadow: 0 5px 10px rgba(0,0,0,.1);
   }
   

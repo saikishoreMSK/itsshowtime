@@ -3,6 +3,85 @@ const scroll = new LocomotiveScroll({
     smooth: true
 });
 
+function startLoader(){
+  var elemCounter = document.querySelector(".counter");
+  var currentValue = 0;
+
+  function updateCounter(){
+    if(currentValue === 100){
+      return;
+    }
+    
+    currentValue += Math.floor(Math.random()*10)+1;
+
+    if(currentValue > 100){
+      currentValue = 100;
+    }
+    elemCounter.textContent = currentValue;
+    let delay = Math.floor(Math.random()*200 +50);
+    setTimeout(updateCounter,delay);
+  }
+  updateCounter();
+}
+startLoader();
+
+
+//animation using gsap and timeline
+var t1 = gsap.timeline()
+t1.to(".counter",0.25,{
+  opacity:0,
+  delay:3.5
+})
+t1.to(".bar",{
+  height:0,
+  stagger:.3,
+  ease: Power3
+})
+t1.from("#nav img,#nav a,#nav i",{
+  y:-100,
+  duration:1,
+  opacity:0,
+  stagger:0.1
+})
+
+t1.from("#homemain h1",{
+  x:-100,
+  duration:1,
+  opacity:0,
+  stagger:0.2
+})
+
+t1.from("#genres h1",{
+  x:-100,
+  duration:1,
+  opacity:0,
+  stagger:0.2,
+  // scrollTrigger:{
+  //   trigger:"#genres h1",
+  //   scroll: "#main",
+  //   markers:true,
+  //   start:"top 60%",
+  // }
+})
+
+//Navigation 
+let sections = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('home nav a');
+window.onscroll = () => {
+    sections.forEach(sec => {
+        let top = window.scrollY;
+        let offset = sec.offsetTop - 150;
+        let height = sec.offsetHeight;
+        let id = sec.getAttribute('id');
+        if(top >= offset && top < offset + height) {
+            navLinks.forEach(links => {
+                links.classList.remove('active');
+                document.querySelector('home nav a[href*=' + id + ']').classList.add('active');
+            });
+        };
+    });
+};
+
 function cirMouseFoll(){
     window.addEventListener("mousemove",(details) => {
         document.querySelector("#minicircle").style.transform = `translate(${details.clientX}px, ${details.clientY}px)`;
@@ -35,37 +114,6 @@ function vidMouseFoll() {
 cirMouseFoll();
 vidMouseFoll();
 
-//animation using gsap and timeline
-var t1 = gsap.timeline()
-t1.from("#nav img,#nav a,#nav i",{
-  y:-100,
-  duration:1,
-  delay:1,
-  opacity:0,
-  stagger:0.1
-})
-
-t1.from("#homemain h1",{
-  x:-100,
-  duration:1,
-  opacity:0,
-  stagger:0.2
-})
-
-t1.from("#genres h1",{
-  x:-100,
-  duration:1,
-  opacity:0,
-  stagger:0.2,
-  // scrollTrigger:{
-  //   trigger:"#genres h1",
-  //   scroll: "#main",
-  //   markers:true,
-  //   start:"top 60%",
-  // }
-})
-
-
 //anchor tag scroll
 
 document.getElementById('next').onclick = function(){
@@ -76,10 +124,11 @@ document.getElementById('prev').onclick = function(){
     let lists = document.querySelectorAll('.item');
     document.getElementById('slide').prepend(lists[lists.length-1]);
 }
-
+let totalPrice = 0;
 // goToTicket
 function goToTicket(name) {
-    let url = 'Ticket/Ticket.html?name='+name;
+    let url = `Ticket/Ticket.html?name=${name}&price=${totalPrice}`;
+    // const url = `../Ticket/Ticket.html?name=${name}&score=${gameScore}`;
     window.location.href = url;
 }
 
@@ -205,6 +254,19 @@ document.querySelectorAll(".head-line").forEach(function (line) {
   });
 });
 
+// Food Section
+document.addEventListener("DOMContentLoaded", () => {
+  const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+  addToCartButtons.forEach(button => {
+      button.addEventListener("click", function() {
+          const price = parseInt(this.closest(".card").querySelector('[data-price]').getAttribute('data-price'), 10);
+          totalPrice += price;
+          console.log("Total Price:", totalPrice);
+      });
+  });
+});
+
 // contact us details
 const logo = document.getElementById("logo"),
       images = logo.querySelectorAll(".contact img");
@@ -245,7 +307,7 @@ const shiftLogo = (e, images) => {
 
 const resetLogo = () => {
   setActiveTo(false);
-  shiftAll(images, 0.4, -0.7);
+  shiftAll(images, 0.4, -0.5);
 }
 
 window.onmousemove = e => shiftLogo(e, images);
