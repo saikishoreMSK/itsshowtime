@@ -81,11 +81,12 @@ function startOver() {
 }
 
 const urlParams = new URLSearchParams(window.location.search);
-let name = urlParams.get('name');
+const name = urlParams.get('name');
+const totalPrice = urlParams.get('price');
 
 // Redirect to the ticket site with the game score as a parameter
 function goToTicket() {
-  const url = `../Ticket/Ticket.html?name=${name}&score=${gameScore}`;
+  const url = `../Ticket/Ticket.html?name=${name}&price=${totalPrice}&score=${gameScore}`;
   window.location.href = url;
 }
 

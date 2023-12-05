@@ -54,7 +54,18 @@ search.addEventListener("keyup", () =>{
     })
 })
 
+// function goToTicket(name) {
+//     let url = '../Ticket/Ticket.html?name='+name;
+//     window.location.href = url;
+// }
+
+// Get parameters from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const name = urlParams.get('name');
+const totalPrice = urlParams.get('price');
+
 function goToTicket(name) {
-    let url = '../Ticket/Ticket.html?name='+name;
+    let url = `../Ticket/Ticket.html?name=${name}&price=${totalPrice}`;
+    // const url = `../Ticket/Ticket.html?name=${name}&score=${gameScore}`;
     window.location.href = url;
 }

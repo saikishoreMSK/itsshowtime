@@ -87,6 +87,7 @@ function cirMouseFoll(){
         document.querySelector("#minicircle").style.transform = `translate(${details.clientX}px, ${details.clientY}px)`;
     });
 }
+
 function vidMouseFoll() {
   const videoContainer = document.querySelector(".video-container");
   const headingsH1 = document.querySelectorAll(".headings h1");
@@ -133,7 +134,8 @@ function goToTicket(name) {
 }
 
 function redirectToMovies(genre) {
-    let url = 'List/index.html?genre='+genre;
+    //let url = 'List/index.html?genre='+genre;
+    let url = `List/index.html?genre=${genre}&price=${totalPrice}`;
     window.location.href = url;
     // movies.html?genre=${genre};
 }

@@ -48,6 +48,7 @@ window.onload = function(){
 // Get parameters from the URL
 const urlParams = new URLSearchParams(window.location.search);
 const gameScore = urlParams.get('score');
+const totalPrice = urlParams.get('price');
 let food = urlParams.get('price');
 food = Number(food);
 
@@ -180,6 +181,7 @@ tickets.forEach((ticket, i) => {
 
             // Display the discounted price on the ticket booking site
             document.getElementById('discountedPrice').innerHTML =  discountedPrice;
+            
         }
 
         // Call the function to apply discount based on the game score
@@ -187,14 +189,23 @@ tickets.forEach((ticket, i) => {
     });
 });
 
-
 // Game Section
 // Event listener for the "Play Game" button
 document.getElementById('playGameButton').addEventListener('click', function() {
     // Redirect the user to the game site
-    window.location.href = '../SimonGame/index.html?name='+name;
+    window.location.href = `../SimonGame/index.html?name=${name}&price=${totalPrice}`;
 });
+let username ="";
+document.addEventListener('DOMContentLoaded', function() {
+    const nameInput = document.getElementById('nameInput');
+    const submitButton = document.getElementById('submitButton');
 
+    nameInput.addEventListener('input', function() {
+        username = this.value; 
+        console.log('Entered Value:', username);
+    });
+});
+var confirmationMessage = ``;
 bookButton.addEventListener("click", () => {
     let count = document.querySelector(".count").innerText;
     let amount = document.querySelector(".amount").innerText;
@@ -209,12 +220,18 @@ bookButton.addEventListener("click", () => {
     const selectedDay = document.querySelector('.dates input:checked + label .day').innerText;
     const selectedTime = document.querySelector('.times input:checked + label').innerText;
 
+    // Get user's email address
+    const userEmail = document.getElementById("to").value;
+
     if (count > 0) {
-        let confirmationMessage = `Your ${count} movie ticket(s) at ${selectedCity} (city), ${selectedPlace} (place) on ${selectedDay} ${selectedDate} at ${selectedTime} have been booked with food for a Total of Rs${Number(discountedPrice) + Number(food)}.`;
-        alert(confirmationMessage);
+        confirmationMessage = `Mr/Ms ${username}, Your ${count} movie ticket(s) at ${selectedCity} (city), ${selectedPlace} on ${selectedDay} ${selectedDate} at ${selectedTime} have been booked with food for a Total of Rs${Number(discountedPrice) + Number(food)}.`;
+
+        // Call a function to send the email
+        sendConfirmationEmail(userEmail, confirmationMessage);
     } else {
         alert("Please select at least one ticket before booking.");
     }
 });
-
+console.log(confirmationMessage);
+//alert("Ticket pricing\nBalcony(F1-E10):- 200rs\n1st Class(D1-C10):-150rs\n2ndClass(B1-A10):-100rs");
 // BackEnd
