@@ -9,6 +9,15 @@
 //     });
 // });
 
+var t1 = gsap.timeline();
+
+t1.from(".search-box,.image-box",{
+    opacity: 0,
+    x:-100,
+    duration: 1,
+    stagger: 0.1
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const genreParam = new URLSearchParams(window.location.search).get('genre');
     const images = document.querySelectorAll('.image-box');
@@ -45,7 +54,18 @@ search.addEventListener("keyup", () =>{
     })
 })
 
+// function goToTicket(name) {
+//     let url = '../Ticket/Ticket.html?name='+name;
+//     window.location.href = url;
+// }
+
+// Get parameters from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const name = urlParams.get('name');
+const totalPrice = urlParams.get('price');
+
 function goToTicket(name) {
-    let url = '../Ticket/Ticket.html?name='+name;
+    let url = `../Ticket/Ticket.html?name=${name}&price=${totalPrice}`;
+    // const url = `../Ticket/Ticket.html?name=${name}&score=${gameScore}`;
     window.location.href = url;
 }

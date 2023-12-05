@@ -4,8 +4,57 @@
 //     let booked = randint === 1 ? "booked" : "";
 //     seats.insertAdjacentHTML("beforeend", '<input type="checkbox" name="tickets" id="s' + (i + 2) + '"><label for="s' + (i + 2) + '" class="seat ' + booked + '"></label>')
 // };
-let urlParams= new URLSearchParams(window.location.search);
-let name = urlParams.get('name');
+
+var cityAreainfo = {
+    Hyderabad: ["AMB Cinemas:Gachibowli","Prasads Multiplex: Hyderabad","Asian Lakshmikala Cinepride:Moosapet","AAA Cinemas: Ameerpet","GPR Multiplex:Nizampet","Asian M Cube Mall: Attapur","Asian Cineplanet Multiplex: Kompally","Asian CineSquare Multiplex: Uppal","BVK Multiplex Vijayalakshmi: LB Nagar","Asian Sha & Shahensha: Chintal"],
+    Mumbai: ["G7 Multiplex:Bandra(W)","Cinepolis:NaviMumbai","INOX:Megaplex,Malad","PVR ICON:Goregan","MovieTime:Goregaon","Maxus Cinemas:Bhayander","Metro INOX:Marine Lines","BMX Cinemas","Woodland Cinemas:Virar(W)","Nishat Cinema: Grant Road"],
+    Chennai: ["AGS Cinemas: Villivakkam","AGS Cinemas: T.Nagar","AGS Cinemas: Maduravoyal","PVR: Aerohub","Arul Muruga Theatre 4k: Thiryporur","EVP Cinemas: Chennai","INOX: The Marina Mall","INOX National: Arcot Road","Cinepolis: BSR Mall","Green Cinemas 4K Atmos:Padi"],
+    Delhi: ["PVR: Vegas Dwarka","Delite Cinema: Asaf Ali Road","Liberty Cinema: Karol Bagh","Cinepolis: DLF Avenue","PVR Promenade: Vasant Kunj","PVR: Select City Walk","G3s Cinema: Rohini ","INOX: Janak Place","Amba Cinema:Delhi","INOX: Patel Nagar"],
+    Bengaluru: ["PVR: Orion MAll","PVR: Vega City","Cinepolis: Lulu Mall","Gopalan Grand Mall: Old Madras","Miraj Cinemas: TGN Lotus Elite","Urvashi Cinema: Benguluru","Navrang Theatre: Rajaji Nagar","Veeresh Cinemas: Magadi Road","HMT Digital 4K Cinema: Jalahalli","INOX: Brookefield Mall"]
+}
+
+window.onload = function(){
+    const selectCity = document.getElementById('city'),
+     selectPlace = document.getElementById('area'),
+     selects = document.querySelectorAll('select')
+
+     selectPlace.disabled = true
+
+     selects.forEach(select => {
+        if(select.disabled == true){
+            select.style.cursor = "auto"
+        }
+     })
+
+     for(let city in cityAreainfo){
+        selectCity.options[selectCity.options.length] = new Option(city,city)
+     }
+    selectCity.onchange = (e) =>{
+        selectPlace.disabled = false
+        selectPlace.length=1
+        for(let place in cityAreainfo[e.target.value]){
+            selectPlace.options[selectPlace.options.length] = new Option(cityAreainfo[e.target.value][place],cityAreainfo[e.target.value][place])
+            selectPlace.onchange=(ev)=>{
+                toggleBooked();
+            }
+        }
+
+        // Call toggleBooked() when city selection changes
+        toggleBooked();
+    }
+}
+
+
+// Get parameters from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const gameScore = urlParams.get('score');
+const totalPrice = urlParams.get('price');
+let food = urlParams.get('price');
+food = Number(food);
+
+
+// let urlParams= new URLSearchParams(window.location.search);
+const name = urlParams.get('name');
 let description = urlParams.get('description');
 
 document.querySelector('.title').textContent = name;
@@ -35,6 +84,7 @@ function toggleBooked(){
         seat.classList.toggle('booked',booked === "booked");
     });
 }
+
 toggleBooked();
 document.querySelector('.dates').addEventListener('click',() => {
     toggleBooked();
@@ -43,8 +93,7 @@ document.querySelector('.times').addEventListener('click',() => {
     toggleBooked();
 });
 
-
-let food = 500;
+console.log(food);
 let tickets = seats.querySelectorAll("input");
 let foodButton = document.getElementById("foodButton");
 let bookButton = document.getElementById("bookButton");
@@ -71,18 +120,6 @@ foodButton.addEventListener("click", () => {
     }
 
     document.querySelector(".amount").innerHTML = amount;
-});
-
-bookButton.addEventListener("click", () => {
-    let count = document.querySelector(".count").innerHTML;
-    let amount = document.querySelector(".amount").innerHTML;
-
-    if (count > 0) {
-        let confirmationMessage = `Your ${count} movie ticket(s) have been booked for a total of Rs${amount}.`;
-        alert(confirmationMessage);
-    } else {
-        alert("Please select at least one ticket before booking.");
-    }
 });
 
 tickets.forEach((ticket, i) => {
@@ -123,48 +160,78 @@ tickets.forEach((ticket, i) => {
 
         document.querySelector(".amount").innerHTML = amount;
         document.querySelector(".count").innerHTML = count;
+  
+        // Function to receive the game score and apply discount
+        function receiveGameScore() {
+            // Get the game score from the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const score = parseInt(urlParams.get('score')) || 0;
+
+            // Calculate discount based on the score (example: 5% for every 5 points)
+            const discountPercentage = Math.floor(score / 5) * 2;
+            if (discountPercentage >= 8) {
+                discountPercentage = 8;
+            }
+
+            // Get the original ticket price (replace this with your actual logic)
+            const ticketPrice = parseInt(document.querySelector(".amount").innerHTML);
+
+            // Calculate the discounted price
+            const discountedPrice = ticketPrice - (ticketPrice * discountPercentage) / 100;
+
+            // Display the discounted price on the ticket booking site
+            document.getElementById('discountedPrice').innerHTML =  discountedPrice;
+            
+        }
+
+        // Call the function to apply discount based on the game score
+        receiveGameScore();
     });
 });
 
+// Game Section
+// Event listener for the "Play Game" button
+document.getElementById('playGameButton').addEventListener('click', function() {
+    // Redirect the user to the game site
+    window.location.href = `../SimonGame/index.html?name=${name}&price=${totalPrice}`;
+});
+let username ="";
+document.addEventListener('DOMContentLoaded', function() {
+    const nameInput = document.getElementById('nameInput');
+    const submitButton = document.getElementById('submitButton');
 
-// var cityAreainfo = {
-//     Hyderabad: [""],
-//     Mumbai: ["G7 Multiplex:Bandra(W)","Cinepolis:NaviMumbai","INOX:Megaplex,Malad","PVR ICON:Goregan","MovieTime:Goregaon","Maxus Cinemas:Bhayander","Metro INOX:Marine Lines","BMX Cinemas"],
-//     Chennai: [""],
-//     Delhi: [""],
-//     Bengaluru: [""]
-// }
-var cityAreainfo = {
-    Hyderabad: ["AMB Cinemas:Gachibowli","Prasads Multiplex: Hyderabad","Asian Lakshmikala Cinepride:Moosapet","AAA Cinemas: Ameerpet","GPR Multiplex:Nizampet","Asian M Cube Mall: Attapur","Asian Cineplanet Multiplex: Kompally","Asian CineSquare Multiplex: Uppal","BVK Multiplex Vijayalakshmi: LB Nagar","Asian Sha & Shahensha: Chintal"],
-    Mumbai: ["G7 Multiplex:Bandra(W)","Cinepolis:NaviMumbai","INOX:Megaplex,Malad","PVR ICON:Goregan","MovieTime:Goregaon","Maxus Cinemas:Bhayander","Metro INOX:Marine Lines","BMX Cinemas","Woodland Cinemas:Virar(W)","Nishat Cinema: Grant Road"],
-    Chennai: ["AGS Cinemas: Villivakkam","AGS Cinemas: T.Nagar","AGS Cinemas: Maduravoyal","PVR: Aerohub","Arul Muruga Theatre 4k: Thiryporur","EVP Cinemas: Chennai","INOX: The Marina Mall","INOX National: Arcot Road","Cinepolis: BSR Mall","Green Cinemas 4K Atmos:Padi"],
-    Delhi: ["PVR: Vegas Dwarka","Delite Cinema: Asaf Ali Road","Liberty Cinema: Karol Bagh","Cinepolis: DLF Avenue","PVR Promenade: Vasant Kunj","PVR: Select City Walk","G3s Cinema: Rohini ","INOX: Janak Place","Amba Cinema:Delhi","INOX: Patel Nagar"],
-    Bengaluru: ["PVR: Orion MAll","PVR: Vega City","Cinepolis: Lulu Mall","Gopalan Grand Mall: Old Madras","Miraj Cinemas: TGN Lotus Elite","Urvashi Cinema: Benguluru","Navrang Theatre: Rajaji Nagar","Veeresh Cinemas: Magadi Road","HMT Digital 4K Cinema: Jalahalli","INOX: Brookefield Mall"]
-}
+    nameInput.addEventListener('input', function() {
+        username = this.value; 
+        console.log('Entered Value:', username);
+    });
+});
+var confirmationMessage = ``;
+bookButton.addEventListener("click", () => {
+    let count = document.querySelector(".count").innerText;
+    let amount = document.querySelector(".amount").innerText;
+    let discountedPrice = document.getElementById("discountedPrice").innerText;
 
-window.onload = function(){
-    const selectCity = document.getElementById('city'),
-     selectPlace = document.getElementById('area'),
-     selects = document.querySelectorAll('select')
+    // Get selected city and place
+    const selectedCity = document.getElementById('city').value;
+    const selectedPlace = document.getElementById('area').value;
 
-     selectPlace.disabled = true
+    // Get selected date and time
+    const selectedDate = document.querySelector('.dates input:checked + label .date').innerText;
+    const selectedDay = document.querySelector('.dates input:checked + label .day').innerText;
+    const selectedTime = document.querySelector('.times input:checked + label').innerText;
 
-     selects.forEach(select => {
-        if(select.disabled == true){
-            select.style.cursor = "auto"
-        }
-     })
+    // Get user's email address
+    const userEmail = document.getElementById("to").value;
 
-     for(let city in cityAreainfo){
-        console.log(city)
-        selectCity.options[selectCity.options.length] = new Option(city,city)
-     }
-    selectCity.onchange = (e) =>{
-        selectPlace.disabled = false
-        selectPlace.length=1
-        for(let place in cityAreainfo[e.target.value]){
-            console.log(place);
-            selectPlace.options[selectPlace.options.length] = new Option(cityAreainfo[e.target.value][place],cityAreainfo[e.target.value][place])
-        }
+    if (count > 0) {
+        confirmationMessage = `Mr/Ms ${username}, Your ${count} movie ticket(s) at ${selectedCity} (city), ${selectedPlace} on ${selectedDay} ${selectedDate} at ${selectedTime} have been booked with food for a Total of Rs${Number(discountedPrice) + Number(food)}.`;
+
+        // Call a function to send the email
+        sendConfirmationEmail(userEmail, confirmationMessage);
+    } else {
+        alert("Please select at least one ticket before booking.");
     }
-}
+});
+console.log(confirmationMessage);
+//alert("Ticket pricing\nBalcony(F1-E10):- 200rs\n1st Class(D1-C10):-150rs\n2ndClass(B1-A10):-100rs");
+// BackEnd
