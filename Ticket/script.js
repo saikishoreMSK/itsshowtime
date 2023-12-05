@@ -207,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 var confirmationMessage = ``;
 bookButton.addEventListener("click", () => {
+    console.log("hello");
     let count = document.querySelector(".count").innerText;
     let amount = document.querySelector(".amount").innerText;
     let discountedPrice = document.getElementById("discountedPrice").innerText;
@@ -221,13 +222,14 @@ bookButton.addEventListener("click", () => {
     const selectedTime = document.querySelector('.times input:checked + label').innerText;
 
     // Get user's email address
-    const userEmail = document.getElementById("to").value;
+    // const userEmail = document.getElementById("to").value;
 
     if (count > 0) {
         confirmationMessage = `Mr/Ms ${username}, Your ${count} movie ticket(s) at ${selectedCity} (city), ${selectedPlace} on ${selectedDay} ${selectedDate} at ${selectedTime} have been booked with food for a Total of Rs${Number(discountedPrice) + Number(food)}.`;
-
+        console.log(confirmationMessage);
+        alert(confirmationMessage);
         // Call a function to send the email
-        sendConfirmationEmail(userEmail, confirmationMessage);
+        // sendConfirmationEmail(userEmail, confirmationMessage);
     } else {
         alert("Please select at least one ticket before booking.");
     }
