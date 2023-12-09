@@ -104,29 +104,25 @@
 
     
     <div class="container">
-
-        <form>
-    
+        <form action="/send_email" method="post">
             <div class="row">
-    
                 <div class="col">
                     <h3 class="title">Payment</h3>
-    
                     <div class="inputBox">
                         <span>cards accepted :</span>
                         <img src="../Movies/food/card_img.png" alt="">
                     </div>
                     <div class="inputBox">
                         <span>name on card :</span>
-                        <input type="text" id="nameInput" placeholder="mr. john deo">
+                        <input type="text" id="name" name="name" placeholder="mr. john deo" required>
                     </div>
                     <div class="inputBox">
                         <span>email :</span>
-                        <input type="email" name="to" id="to" placeholder="example@example.com">
+                        <input type="email" name="to" id="to" placeholder="example@example.com" required>
                     </div>
                     <div class="inputBox">
                         <span>credit card number :</span>
-                        <input type="number" placeholder="1111-2222-3333-4444">
+                        <input type="number" name="credit" id="credit" placeholder="1111-2222-3333-4444">
                     </div>
                     <div class="inputBox">
                         <span>exp month :</span>
@@ -143,7 +139,7 @@
                             <input type="text" placeholder="1234">
                         </div>
                     </div>
-                    <!-- <input type="submit" value="Submit"> -->
+                    <input type="submit" value="Send">
                     <!-- <button id="submitButton">Submit</button> -->
                 </div>
     
