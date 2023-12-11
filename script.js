@@ -140,14 +140,7 @@ function redirectToMovies(genre) {
     // movies.html?genre=${genre};
 }
 // Genres
-// document.querySelectorAll(".elem").forEach(function (elem){
-//     elem.addEventListener("mousemove",function(details){
-//         gsap.to(elem.querySelector("img"),{
-//             opacity:1,
-//             ease: Power3 ,
-//         });
-//     });
-// });
+
 document.querySelectorAll(".elem").forEach(function (elem){
     var rotate = 0;
     var diffrot = 0;

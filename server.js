@@ -57,7 +57,7 @@ app.post("/send_email", function (req, response) {
         } else {
             console.log("Email Sent: " + info.response);
         }
-        // response.redirect("/");
+        response.redirect("/");
     });
 });
 

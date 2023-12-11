@@ -1049,3 +1049,150 @@ position: absolute;
 }
 
 /* colors:- #d9ed92,#d9ed92 */
+
+
+/* set of media queries for a basic mobile view */
+/* Mobile View */
+@media only screen and (max-width: 767px) {
+    #nav {
+        padding: 20px;
+    }
+    
+    #right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    #nav a {
+        font-size: 16px;
+    }
+
+    #homemain {
+        padding: 10vw 0vw 8vw 3vw;
+    }
+
+    #homemain h1 {
+        font-size: 4vw;
+        letter-spacing: -.05vw;
+    }
+
+    .video-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    #homemain .headings h1 {
+        font-size: 15vw;
+        letter-spacing: -5px;
+    }
+}
+/* Mobile View  container*/
+/* @media only screen and (max-width: 767px) {
+    .container {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    #slide {
+        margin-top: 20px;
+    }
+
+    .item {
+        width: 100%;
+        height: 200px;
+        top: 0;
+        transform: translate(0, 0);
+        border-radius: 10px;
+        box-shadow: none;
+    }
+
+    .item .content {
+        top: 50%;
+        left: 10px;
+        width: 90%;
+    }
+
+    .item .name {
+        font-size: 24px;
+    }
+
+    .item .des {
+        font-size: 14px;
+    }
+
+    .item a {
+        font-size: 18px;
+        padding-right: 0;
+    }
+
+    .item button {
+        font-size: 14px;
+        padding: 8px 16px;
+        margin-top: 10px;
+    }
+
+    .buttons {
+        bottom: 10px;
+    }
+
+    .buttons button {
+        width: 40px;
+        height: 40px;
+    }
+} */
+
+/* Mobile View recommended
+@media only screen and (max-width: 767px) {
+    .recommend h2 {
+        top: 10vh;
+    }
+
+    .recommend h2:nth-child(2) {
+        top: 45vh;
+    }
+
+    .image-track {
+        top: 40%;
+        gap: 2vmin;
+    }
+
+    .image-container h1 {
+        top: 90%;
+        font-size: 1rem;
+    }
+
+    .image-container > .image {
+        width: 80vw;
+        height: 40vh;
+    }
+
+    .recommend button {
+        bottom: 2px;
+        right: 10px;
+        padding: 4px 8px;
+    }
+} */
+/* Mobile View genres */
+@media only screen and (max-width: 767px) {
+    .genrehead {
+        font-size: 4vw;
+    }
+
+    #genres {
+        padding-right: 0;
+    }
+
+    .elem {
+        padding: 8vw 3vw;
+    }
+
+    .elem h1 {
+        font-size: 8vw;
+    }
+
+    .elem img {
+        height: 120px;
+    }
+}
