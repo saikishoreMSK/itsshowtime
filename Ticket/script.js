@@ -5,6 +5,25 @@
 //     seats.insertAdjacentHTML("beforeend", '<input type="checkbox" name="tickets" id="s' + (i + 2) + '"><label for="s' + (i + 2) + '" class="seat ' + booked + '"></label>')
 // };
 
+// ----------------------------------------------------------------------------
+// EmailJS configuration
+// Create a free account at https://www.emailjs.com/ and fill these in.
+// These IDs are PUBLIC by design (safe to ship in client-side code) — they are
+// NOT secrets. Configure allowed origins/domains in your EmailJS dashboard to
+// prevent abuse. Your email template should accept the variables used in
+// templateParams below (to_email, to_name, message).
+// ----------------------------------------------------------------------------
+const EMAILJS_PUBLIC_KEY = "ixqV01xZxG89Y4trS";
+const EMAILJS_SERVICE_ID = "service_1ff6kot";
+const EMAILJS_TEMPLATE_ID = "template_6kirdkw";
+
+
+
+// Initialize EmailJS if the SDK loaded successfully.
+if (typeof emailjs !== "undefined") {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+}
+
 var cityAreainfo = {
     Hyderabad: ["AMB Cinemas:Gachibowli","Prasads Multiplex: Hyderabad","Asian Lakshmikala Cinepride:Moosapet","AAA Cinemas: Ameerpet","GPR Multiplex:Nizampet","Asian M Cube Mall: Attapur","Asian Cineplanet Multiplex: Kompally","Asian CineSquare Multiplex: Uppal","BVK Multiplex Vijayalakshmi: LB Nagar","Asian Sha & Shahensha: Chintal"],
     Mumbai: ["G7 Multiplex:Bandra(W)","Cinepolis:NaviMumbai","INOX:Megaplex,Malad","PVR ICON:Goregan","MovieTime:Goregaon","Maxus Cinemas:Bhayander","Metro INOX:Marine Lines","BMX Cinemas","Woodland Cinemas:Virar(W)","Nishat Cinema: Grant Road"],
@@ -168,7 +187,7 @@ tickets.forEach((ticket, i) => {
             const score = parseInt(urlParams.get('score')) || 0;
 
             // Calculate discount based on the score (example: 5% for every 5 points)
-            const discountPercentage = Math.floor(score / 5) * 2;
+            let discountPercentage = Math.floor(score / 5) * 2;
             if (discountPercentage >= 8) {
                 discountPercentage = 8;
             }
@@ -195,16 +214,43 @@ document.getElementById('playGameButton').addEventListener('click', function() {
     // Redirect the user to the game site
     window.location.href = `../SimonGame/index.html?name=${name}&price=${totalPrice}`;
 });
-let username ="";
+let username = "";
 document.addEventListener('DOMContentLoaded', function() {
-    const nameInput = document.getElementById('nameInput');
-    const submitButton = document.getElementById('submitButton');
-
-    nameInput.addEventListener('input', function() {
-        username = this.value; 
-        console.log('Entered Value:', username);
-    });
+    const nameInput = document.getElementById('name'); // "name on card" field
+    if (nameInput) {
+        nameInput.addEventListener('input', function() {
+            username = this.value;
+        });
+    }
 });
+
+// Prevent the (decorative) payment form from doing a real page POST.
+const paymentForm = document.getElementById('paymentForm');
+if (paymentForm) {
+    paymentForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+    });
+}
+
+// Send a booking confirmation email via EmailJS (client-side).
+function sendConfirmationEmail(toEmail, toName, message) {
+    if (typeof emailjs === "undefined") {
+        console.warn("EmailJS SDK not loaded; skipping email.");
+        return;
+    }
+    if (EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY") {
+        console.warn("EmailJS not configured yet; skipping email. See README.");
+        return;
+    }
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        to_email: toEmail,
+        to_name: toName,
+        message: message
+    }).then(
+        () => console.log("Confirmation email sent to", toEmail),
+        (err) => console.error("Failed to send confirmation email:", err)
+    );
+}
 var confirmationMessage = ``;
 bookButton.addEventListener("click", () => {
     console.log("hello");
@@ -221,15 +267,18 @@ bookButton.addEventListener("click", () => {
     const selectedDay = document.querySelector('.dates input:checked + label .day').innerText;
     const selectedTime = document.querySelector('.times input:checked + label').innerText;
 
-    // Get user's email address
-    // const userEmail = document.getElementById("to").value;
+    // Get user's email address from the payment form
+    const userEmail = document.getElementById("to").value;
 
     if (count > 0) {
         confirmationMessage = `Mr/Ms ${username}, Your ${count} movie ticket(s) at ${selectedCity} (city), ${selectedPlace} on ${selectedDay} ${selectedDate} at ${selectedTime} have been booked with food for a Total of Rs${Number(discountedPrice) + Number(food)}.`;
         console.log(confirmationMessage);
         alert(confirmationMessage);
-        // Call a function to send the email
-        // sendConfirmationEmail(userEmail, confirmationMessage);
+
+        // Send the confirmation email (no-op until EmailJS is configured).
+        if (userEmail) {
+            sendConfirmationEmail(userEmail, username || "Customer", confirmationMessage);
+        }
     } else {
         alert("Please select at least one ticket before booking.");
     }
